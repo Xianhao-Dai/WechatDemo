@@ -41,9 +41,11 @@ CGFloat const kHeaderViewHeight = 64.0f;
 }
 
 - (void)viewDidLayoutSubviews {
-    CGSize size = self.chatListTableView.contentSize;
-    self.chatListTableView.contentInset = UIEdgeInsetsMake(-kHeaderViewHeight, 0, 0, 0);
-    NSLog(@"%f,%f", size.width, size.height);
+    [super viewDidLayoutSubviews];
+    [self.view layoutIfNeeded];
+    CGFloat contentHeight = self.chatListTableView.contentSize.height;
+    CGFloat viewHeight = self.contentContainerView.frame.size.height;
+    self.chatListTableView.contentInset = UIEdgeInsetsMake(0, 0, contentHeight >= viewHeight + kHeaderViewHeight ? 0 : viewHeight + kHeaderViewHeight - contentHeight, 0);
 }
 
 #pragma mark - Private Method
