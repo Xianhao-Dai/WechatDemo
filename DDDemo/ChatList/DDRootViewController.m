@@ -8,6 +8,7 @@
 #import "DDRootViewController.h"
 #import "DDChatListTableViewCell.h"
 #import "DDChatListViewModel.h"
+#import "DDMesageViewController.h"
 #import <Masonry/Masonry.h>
 
 @interface DDRootViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
@@ -30,10 +31,23 @@ CGFloat const kHeaderViewHeight = 64.0f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.navigationItem.title = @"微信";
+    self.navigationItem.backButtonTitle = @"";
+    self.navigationController.navigationBar.tintColor = [UIColor labelColor];
     [self.chatListTableView registerClass:[DDChatListTableViewCell class] forCellReuseIdentifier:chatListTableViewCellIdentifier];
     [self p_loadViewModel];
     [self p_setupUI];
     [self p_makeConstraints];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSIndexPath *indexPath = [self.chatListTableView indexPathForSelectedRow];
+    if (indexPath) {
+        [self.chatListTableView deselectRowAtIndexPath:indexPath animated:YES];
+        UITableViewCell *cell = [self.chatListTableView cellForRowAtIndexPath:indexPath];
+        cell.selectedBackgroundView.backgroundColor = [UIColor systemBackgroundColor];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -91,7 +105,10 @@ CGFloat const kHeaderViewHeight = 64.0f;
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"");
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.selectedBackgroundView.backgroundColor = [UIColor systemGray6Color];
+    DDMesageViewController *messageViewController = [[DDMesageViewController alloc] init];
+    [self.navigationController pushViewController:messageViewController animated:YES];
 }
 
 #pragma mark - UITableViewDatasource
@@ -172,15 +189,5 @@ CGFloat const kHeaderViewHeight = 64.0f;
     }
     return _contentContainerView;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

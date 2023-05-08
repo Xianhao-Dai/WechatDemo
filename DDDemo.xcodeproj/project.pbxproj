@@ -13,6 +13,7 @@
 		F0565A612A068FE100517887 /* DDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0565A602A068FE100517887 /* DDRootViewController.m */; };
 		F0565A642A0690AB00517887 /* DDChatListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0565A632A0690AB00517887 /* DDChatListViewModel.m */; };
 		F0565A672A06B5B300517887 /* DDChatListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0565A662A06B5B300517887 /* DDChatListTableViewCell.m */; };
+		F0565A702A0951F700517887 /* DDMesageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0565A6F2A0951F700517887 /* DDMesageViewController.m */; };
 		F0B439BF2A068C0500F28F04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B439BE2A068C0500F28F04 /* AppDelegate.m */; };
 		F0B439C22A068C0500F28F04 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B439C12A068C0500F28F04 /* SceneDelegate.m */; };
 		F0B439C82A068C0500F28F04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0B439C62A068C0500F28F04 /* Main.storyboard */; };
@@ -57,6 +58,8 @@
 		F0565A632A0690AB00517887 /* DDChatListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDChatListViewModel.m; sourceTree = "<group>"; };
 		F0565A652A06B5B300517887 /* DDChatListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDChatListTableViewCell.h; sourceTree = "<group>"; };
 		F0565A662A06B5B300517887 /* DDChatListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDChatListTableViewCell.m; sourceTree = "<group>"; };
+		F0565A6E2A0951F700517887 /* DDMesageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDMesageViewController.h; sourceTree = "<group>"; };
+		F0565A6F2A0951F700517887 /* DDMesageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDMesageViewController.m; sourceTree = "<group>"; };
 		F0B439BA2A068C0500F28F04 /* DDDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0B439BD2A068C0500F28F04 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F0B439BE2A068C0500F28F04 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -128,6 +131,15 @@
 			path = ChatList;
 			sourceTree = "<group>";
 		};
+		F0565A6D2A0951A200517887 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				F0565A6E2A0951F700517887 /* DDMesageViewController.h */,
+				F0565A6F2A0951F700517887 /* DDMesageViewController.m */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
 		F0B439B12A068C0500F28F04 = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +165,7 @@
 		F0B439BC2A068C0500F28F04 /* DDDemo */ = {
 			isa = PBXGroup;
 			children = (
+				F0565A6D2A0951A200517887 /* Message */,
 				F0565A682A08DA9B00517887 /* ChatList */,
 				F0B439BD2A068C0500F28F04 /* AppDelegate.h */,
 				F0B439BE2A068C0500F28F04 /* AppDelegate.m */,
@@ -433,6 +446,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0565A612A068FE100517887 /* DDRootViewController.m in Sources */,
+				F0565A702A0951F700517887 /* DDMesageViewController.m in Sources */,
 				F0565A642A0690AB00517887 /* DDChatListViewModel.m in Sources */,
 				F0B439BF2A068C0500F28F04 /* AppDelegate.m in Sources */,
 				F0565A672A06B5B300517887 /* DDChatListTableViewCell.m in Sources */,

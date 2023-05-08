@@ -34,6 +34,11 @@ CGFloat const kSeparatorHeight = 1.0f;
     return self;
 }
 
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    self.selectedBackgroundView = nil;
+}
+
 #pragma mark - Private Method
 
 - (void)p_setupUI {
