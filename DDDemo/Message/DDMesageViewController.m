@@ -9,9 +9,13 @@
 #import "DDChatListViewModel.h"
 #import "DDMessageListViewController.h"
 #import "DDInputViewController.h"
+#import "DDInputViewControllerDelegate.h"
 #import <Masonry/Masonry.h>
 
-@interface DDMesageViewController ()
+@interface DDMesageViewController () <
+DDMessageListViewControllerDelegate,
+DDInputViewControllerDelegate
+>
 
 @property (nonatomic, strong) UIView *contentContainerView;
 @property (nonatomic, strong) DDMessageListViewController *messageListVC;
@@ -24,15 +28,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self p_setMessageListVC];
+    [self p_setInputVC];
     [self p_setupUI];
     [self p_makeConstraints];
+}
+
+#pragma mark - DDInputViewControllerDelegate
+
+- (void)moveInputViewWithKeyboardHeight:(CGFloat)height duration:(NSTimeInterval)duration {
+    __weak typeof(self) weakSelf = self;
+    CGFloat safeAreaHeight = self.view.safeAreaInsets.bottom;
+    height = height > safeAreaHeight ? height :safeAreaHeight;
+    [UIView animateWithDuration:duration animations:^{
+        __strong typeof(weakSelf) strongSelf = self;
+        [strongSelf.contentContainerView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.bottom.mas_equalTo(strongSelf.view.mas_bottom).offset(-height);
+        }];
+        [self.view layoutIfNeeded];
+    }];
+}
+
+#pragma mark - DDMessageListViewControllerDelegate
+
+- (void)handleMessageListVCTapGes {
+    [self.inputVC endEditing:YES];
 }
 
 #pragma mark - Private Method
 
 - (void)p_setupUI {
-    self.messageListVC = [[DDMessageListViewController alloc] init];
-    self.inputVC = [[DDInputViewController alloc] init];
     self.view.backgroundColor = [UIColor systemBackgroundColor];
     self.navigationItem.title = self.viewModel.name;
     [self.view addSubview:self.contentContainerView];
@@ -61,6 +86,16 @@
         make.bottom.equalTo(self.contentContainerView);
         make.height.mas_equalTo(64);
     }];
+}
+
+- (void)p_setMessageListVC {
+    self.messageListVC = [[DDMessageListViewController alloc] init];
+    self.messageListVC.delegate = self;
+}
+
+- (void)p_setInputVC {
+    self.inputVC = [[DDInputViewController alloc] init];
+    self.inputVC.delegate = self;
 }
 
 #pragma mark - Lazy Loader

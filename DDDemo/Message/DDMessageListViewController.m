@@ -9,6 +9,8 @@
 
 @interface DDMessageListViewController ()
 
+@property (nonatomic, strong) UITapGestureRecognizer *tapGes;
+
 @end
 
 @implementation DDMessageListViewController
@@ -16,16 +18,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self p_addGestures];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - Gesture Recognizer
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)p_addGestures {
+    self.tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(p_handleTapGes:)];
+    [self.view addGestureRecognizer:self.tapGes];
 }
-*/
+
+#pragma mark - Private Method
+
+- (void)p_handleTapGes:(UITapGestureRecognizer *) ges {
+    [self.delegate handleMessageListVCTapGes];
+}
 
 @end

@@ -18,9 +18,7 @@
 		F0565A762A09E83000517887 /* DDInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0565A752A09E83000517887 /* DDInputViewController.m */; };
 		F0B439BF2A068C0500F28F04 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B439BE2A068C0500F28F04 /* AppDelegate.m */; };
 		F0B439C22A068C0500F28F04 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B439C12A068C0500F28F04 /* SceneDelegate.m */; };
-		F0B439C82A068C0500F28F04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0B439C62A068C0500F28F04 /* Main.storyboard */; };
 		F0B439CA2A068C0700F28F04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0B439C92A068C0700F28F04 /* Assets.xcassets */; };
-		F0B439CD2A068C0700F28F04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0B439CB2A068C0700F28F04 /* LaunchScreen.storyboard */; };
 		F0B439D02A068C0700F28F04 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B439CF2A068C0700F28F04 /* main.m */; };
 		F0B439DA2A068C0700F28F04 /* DDDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B439D92A068C0700F28F04 /* DDDemoTests.m */; };
 		F0B439E42A068C0700F28F04 /* DDDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B439E32A068C0700F28F04 /* DDDemoUITests.m */; };
@@ -66,14 +64,14 @@
 		F0565A722A09E82400517887 /* DDMessageListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDMessageListViewController.m; sourceTree = "<group>"; };
 		F0565A742A09E83000517887 /* DDInputViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDInputViewController.h; sourceTree = "<group>"; };
 		F0565A752A09E83000517887 /* DDInputViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDInputViewController.m; sourceTree = "<group>"; };
+		F0565A772A09EEC500517887 /* DDInputViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDInputViewControllerDelegate.h; sourceTree = "<group>"; };
+		F0565A782A09EFD900517887 /* DDMessageListViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDMessageListViewControllerDelegate.h; sourceTree = "<group>"; };
 		F0B439BA2A068C0500F28F04 /* DDDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0B439BD2A068C0500F28F04 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F0B439BE2A068C0500F28F04 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F0B439C02A068C0500F28F04 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		F0B439C12A068C0500F28F04 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		F0B439C72A068C0500F28F04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F0B439C92A068C0700F28F04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F0B439CC2A068C0700F28F04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F0B439CE2A068C0700F28F04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F0B439CF2A068C0700F28F04 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F0B439D52A068C0700F28F04 /* DDDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DDDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +144,8 @@
 				F0565A722A09E82400517887 /* DDMessageListViewController.m */,
 				F0565A742A09E83000517887 /* DDInputViewController.h */,
 				F0565A752A09E83000517887 /* DDInputViewController.m */,
+				F0565A772A09EEC500517887 /* DDInputViewControllerDelegate.h */,
+				F0565A782A09EFD900517887 /* DDMessageListViewControllerDelegate.h */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -181,9 +181,7 @@
 				F0B439BE2A068C0500F28F04 /* AppDelegate.m */,
 				F0B439C02A068C0500F28F04 /* SceneDelegate.h */,
 				F0B439C12A068C0500F28F04 /* SceneDelegate.m */,
-				F0B439C62A068C0500F28F04 /* Main.storyboard */,
 				F0B439C92A068C0700F28F04 /* Assets.xcassets */,
-				F0B439CB2A068C0700F28F04 /* LaunchScreen.storyboard */,
 				F0B439CE2A068C0700F28F04 /* Info.plist */,
 				F0B439CF2A068C0700F28F04 /* main.m */,
 			);
@@ -325,9 +323,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0B439CD2A068C0700F28F04 /* LaunchScreen.storyboard in Resources */,
 				F0B439CA2A068C0700F28F04 /* Assets.xcassets in Resources */,
-				F0B439C82A068C0500F28F04 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,25 +495,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		F0B439C62A068C0500F28F04 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F0B439C72A068C0500F28F04 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		F0B439CB2A068C0700F28F04 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F0B439CC2A068C0700F28F04 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		F0B439E72A068C0700F28F04 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -555,6 +532,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				EXCLUDED_ARCHS = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -613,6 +591,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXCLUDED_ARCHS = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -641,7 +620,7 @@
 				INFOPLIST_FILE = DDDemo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -668,7 +647,7 @@
 				INFOPLIST_FILE = DDDemo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
