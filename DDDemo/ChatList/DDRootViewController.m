@@ -31,9 +31,6 @@ CGFloat const kHeaderViewHeight = 64.0f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.title = @"微信";
-    self.navigationItem.backButtonTitle = @"";
-    self.navigationController.navigationBar.tintColor = [UIColor labelColor];
     [self.chatListTableView registerClass:[DDChatListTableViewCell class] forCellReuseIdentifier:chatListTableViewCellIdentifier];
     [self p_loadViewModel];
     [self p_setupUI];
@@ -45,8 +42,6 @@ CGFloat const kHeaderViewHeight = 64.0f;
     NSIndexPath *indexPath = [self.chatListTableView indexPathForSelectedRow];
     if (indexPath) {
         [self.chatListTableView deselectRowAtIndexPath:indexPath animated:YES];
-        UITableViewCell *cell = [self.chatListTableView cellForRowAtIndexPath:indexPath];
-        cell.selectedBackgroundView.backgroundColor = [UIColor systemBackgroundColor];
     }
 }
 
@@ -67,10 +62,12 @@ CGFloat const kHeaderViewHeight = 64.0f;
 - (void)p_setupUI {
     [self.view addSubview:self.contentContainerView];
     [self.contentContainerView addSubview:self.chatListTableView];
-    self.view.backgroundColor = [UIColor systemGray5Color];
-    
     self.chatListTableView.tableHeaderView = self.searchBarContainerView;
     [self.searchBarContainerView addSubview:self.searchBar];
+    self.view.backgroundColor = [UIColor systemGray5Color];
+    self.navigationItem.title = @"微信";
+    self.navigationItem.backButtonTitle = @"";
+    self.navigationController.navigationBar.tintColor = [UIColor labelColor];
 }
 
 - (void)p_makeConstraints {
@@ -108,6 +105,7 @@ CGFloat const kHeaderViewHeight = 64.0f;
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.selectedBackgroundView.backgroundColor = [UIColor systemGray6Color];
     DDMesageViewController *messageViewController = [[DDMesageViewController alloc] init];
+    messageViewController.viewModel = [self.viewModel objectAtIndex:[self realIndexWithIndexPath:indexPath]];
     [self.navigationController pushViewController:messageViewController animated:YES];
 }
 
@@ -146,7 +144,7 @@ CGFloat const kHeaderViewHeight = 64.0f;
 - (UITableView *)chatListTableView {
     if (!_chatListTableView) {
         _chatListTableView = [[UITableView alloc] init];
-        _chatListTableView.backgroundColor = [UIColor systemGray5Color];
+        _chatListTableView.backgroundColor = [UIColor systemBackgroundColor];
         _chatListTableView.delegate = self;
         _chatListTableView.dataSource = self;
         _chatListTableView.separatorStyle = UITableViewCellSeparatorStyleNone;

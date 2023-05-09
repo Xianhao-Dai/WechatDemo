@@ -9,7 +9,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DDChatListViewModel;
+
 @interface DDMesageViewController : UIViewController
+
+@property (nonatomic, strong) DDChatListViewModel *viewModel;
 
 @end
 
