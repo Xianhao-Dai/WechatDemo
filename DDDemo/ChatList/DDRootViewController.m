@@ -144,7 +144,7 @@ CGFloat const kHeaderViewHeight = 64.0f;
 - (UITableView *)chatListTableView {
     if (!_chatListTableView) {
         _chatListTableView = [[UITableView alloc] init];
-        _chatListTableView.backgroundColor = [UIColor systemBackgroundColor];
+        _chatListTableView.backgroundColor = [UIColor secondarySystemBackgroundColor];
         _chatListTableView.delegate = self;
         _chatListTableView.dataSource = self;
         _chatListTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -167,7 +167,7 @@ CGFloat const kHeaderViewHeight = 64.0f;
         _searchBar.placeholder = @"搜索";
         _searchBar.barTintColor = [UIColor systemGray5Color];
         _searchBar.tintColor = [UIColor systemBlueColor];
-        _searchBar.searchTextField.backgroundColor = [UIColor systemBackgroundColor];
+        _searchBar.searchTextField.backgroundColor = [UIColor secondarySystemBackgroundColor];
         _searchBar.searchTextField.layer.cornerRadius = 3.0f;
         _searchBar.searchTextField.clipsToBounds = YES;
         _searchBar.searchTextField.borderStyle = UITextBorderStyleNone;

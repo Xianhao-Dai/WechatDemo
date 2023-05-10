@@ -16,7 +16,6 @@ target 'DDDemo' do
   # Pods for DDDemo
 pod 'Masonry'
 pod 'YYKit'
-
   target 'DDDemoTests' do
     inherit! :search_paths
     # Pods for testing

@@ -42,8 +42,11 @@ DDInputViewControllerDelegate
     height = height > safeAreaHeight ? height :safeAreaHeight;
     [UIView animateWithDuration:duration animations:^{
         __strong typeof(weakSelf) strongSelf = self;
-        [strongSelf.contentContainerView mas_updateConstraints:^(MASConstraintMaker *make) {
+        [strongSelf.contentContainerView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop);
             make.bottom.mas_equalTo(strongSelf.view.mas_bottom).offset(-height);
+            make.left.equalTo(self.view.mas_safeAreaLayoutGuideLeft);
+            make.right.equalTo(self.view.mas_safeAreaLayoutGuideRight);
         }];
         [self.view layoutIfNeeded];
     }];
@@ -58,7 +61,7 @@ DDInputViewControllerDelegate
 #pragma mark - Private Method
 
 - (void)p_setupUI {
-    self.view.backgroundColor = [UIColor systemBackgroundColor];
+    self.view.backgroundColor = [UIColor secondarySystemBackgroundColor];
     self.navigationItem.title = self.viewModel.name;
     [self.view addSubview:self.contentContainerView];
     [self addChildViewController:self.messageListVC];
@@ -84,7 +87,7 @@ DDInputViewControllerDelegate
         make.left.equalTo(self.contentContainerView);
         make.right.equalTo(self.contentContainerView);
         make.bottom.equalTo(self.contentContainerView);
-        make.height.mas_equalTo(64);
+//        make.height.mas_equalTo(64);
     }];
 }
 

@@ -37,7 +37,7 @@
 #pragma mark - Private Method
 
 - (void)p_setupUI {
-    self.view.backgroundColor = [UIColor blueColor];
+    self.view.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.contentContainerView];
     [self.contentContainerView addSubview:self.audioBtn];
     [self.contentContainerView addSubview:self.emojiBtn];
@@ -51,23 +51,24 @@
     }];
     [self.audioBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentContainerView.mas_left).offset(14);
-        make.centerY.equalTo(self.contentContainerView.mas_centerY).offset(-6);
+        make.bottom.equalTo(self.contentContainerView.mas_bottom).offset(-20);
         make.width.height.mas_equalTo(36);
     }];
     [self.plusBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentContainerView.mas_right).offset(-14);
-        make.centerY.equalTo(self.contentContainerView.mas_centerY).offset(-6);
+        make.bottom.equalTo(self.contentContainerView.mas_bottom).offset(-20);
         make.width.height.mas_equalTo(36);
     }];
     [self.emojiBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.plusBtn.mas_left).offset(-14);
-        make.centerY.equalTo(self.contentContainerView.mas_centerY).offset(-6);
+        make.bottom.equalTo(self.contentContainerView.mas_bottom).offset(-20);
         make.width.height.mas_equalTo(36);
     }];
     [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.audioBtn.mas_right).offset(14);
         make.right.equalTo(self.emojiBtn.mas_left).offset(-14);
-        make.centerY.equalTo(self.contentContainerView.mas_centerY).offset(-6);
+        make.bottom.equalTo(self.contentContainerView.mas_bottom).offset(-20);
+        make.top.equalTo(self.contentContainerView.mas_top).offset(8);
         make.height.mas_equalTo(36);
     }];
 }
@@ -90,6 +91,19 @@
     }
 }
 
+- (void)textViewDidChange:(YYTextView *)textView {
+    CGFloat maxHeight = 200.0f; // 输入框最大高度
+    CGSize sizeThatFits = [textView sizeThatFits:CGSizeMake(textView.frame.size.width, MAXFLOAT)];
+    CGFloat newHeight = MIN(sizeThatFits.height, maxHeight);
+    [self.textField mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.audioBtn.mas_right).offset(14);
+        make.right.equalTo(self.emojiBtn.mas_left).offset(-14);
+        make.bottom.equalTo(self.contentContainerView.mas_bottom).offset(-20);
+        make.top.equalTo(self.contentContainerView.mas_top).offset(8);
+        make.height.mas_equalTo(newHeight);
+    }];
+}
+
 - (void)handleKeyboardWillShow:(NSNotification *)noti {
     NSDictionary *userInfo = noti.userInfo;
     CGRect keyboardFrame = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
@@ -108,6 +122,16 @@
 - (UIView *)contentContainerView {
     if (!_contentContainerView) {
         _contentContainerView = [[UIView alloc] init];
+        _contentContainerView.backgroundColor = [UIColor secondarySystemBackgroundColor];
+        UIView *separatorLine = [[UIView alloc] init];
+        separatorLine.backgroundColor = [UIColor systemGray2Color];
+        [_contentContainerView addSubview:separatorLine];
+        [separatorLine mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_contentContainerView);
+            make.left.equalTo(_contentContainerView);
+            make.right.equalTo(_contentContainerView);
+            make.height.mas_equalTo(0.5);
+        }];
     }
     return _contentContainerView;
 }
@@ -142,7 +166,14 @@
     if (!_textField) {
         _textField = [[YYTextView alloc] init];
         _textField.delegate = self;
-        _textField.backgroundColor = [UIColor redColor];
+        _textField.backgroundColor = [UIColor systemBackgroundColor];
+        _textField.layer.cornerRadius = 3.0f;
+        _textField.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        _textField.keyboardType = UIKeyboardTypeDefault;
+        _textField.keyboardAppearance = UIKeyboardAppearanceDefault;
+        _textField.returnKeyType = UIReturnKeySend;
+        _textField.font = [UIFont systemFontOfSize:18];
+
     }
     
     return _textField;
