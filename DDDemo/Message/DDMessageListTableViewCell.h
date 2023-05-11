@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DDMessageListTableViewCell : UITableViewCell
 
-- (void)configWithModel:(DDMessageListViewModel *)viewModel andChatListModel:(DDChatListViewModel *)chatListViewModel;
+- (void)configWithModel:(DDMessageListViewModel *)viewModel;
 
 @end
 

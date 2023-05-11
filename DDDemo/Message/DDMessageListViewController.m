@@ -69,7 +69,7 @@ CGFloat const kMessageListTableViewCellHeight = 64.0f;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DDMessageListTableViewCell *cell = [self.messageListTableView dequeueReusableCellWithIdentifier:messageListTableViewCellIdentifier];
-    [cell configWithModel:[self.viewModel objectAtIndex:[self realIndexWithIndexPath:indexPath]] andChatListModel:self.chatListModel];
+    [cell configWithModel:[self.viewModel objectAtIndex:[self realIndexWithIndexPath:indexPath]]];
     return cell;
 }
 

@@ -44,7 +44,7 @@
     [self.contentView addSubview:self.avatarContainerView];
     [self.avatarContainerView addSubview:self.avatarImageView];
     [self.contentView addSubview:self.messageContainerView];
-    [self.contentView addSubview:self.textView];
+    [self.messageContainerView addSubview:self.textView];
     self.backgroundColor = [UIColor secondarySystemBackgroundColor];
 }
 
@@ -88,7 +88,7 @@
     [self.textView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.messageContainerView).insets(padding);
         make.height.mas_equalTo(newHeight);
-        make.width.mas_equalTo(newWidth);
+        make.width.mas_equalTo(newWidth + 6);
     }];
 }
 
@@ -130,8 +130,8 @@
     return _textView;
 }
 
-- (void)configWithModel:(DDMessageListViewModel *)viewModel andChatListModel:(nonnull DDChatListViewModel *)chatListViewModel {
-    [self.avatarImageView setImage:[UIImage imageNamed:chatListViewModel.avatarImgUrl]];
+- (void)configWithModel:(DDMessageListViewModel *)viewModel {
+    [self.avatarImageView setImage:[UIImage imageNamed:@"IMG_06"]];
     self.textView.text = viewModel.message;
 }
 
