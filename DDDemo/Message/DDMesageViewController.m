@@ -52,6 +52,10 @@ DDInputViewControllerDelegate
     }];
 }
 
+- (void)postMessageFromInputVC:(NSString *)message {
+    [self.messageListVC postMessage:message];
+}
+
 #pragma mark - DDMessageListViewControllerDelegate
 
 - (void)handleMessageListVCTapGes {
@@ -87,13 +91,13 @@ DDInputViewControllerDelegate
         make.left.equalTo(self.contentContainerView);
         make.right.equalTo(self.contentContainerView);
         make.bottom.equalTo(self.contentContainerView);
-//        make.height.mas_equalTo(64);
     }];
 }
 
 - (void)p_setMessageListVC {
     self.messageListVC = [[DDMessageListViewController alloc] init];
     self.messageListVC.delegate = self;
+    self.messageListVC.chatListModel = self.viewModel;
 }
 
 - (void)p_setInputVC {

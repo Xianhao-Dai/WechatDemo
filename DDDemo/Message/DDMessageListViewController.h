@@ -10,9 +10,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class DDMessageListViewModel;
+@class DDChatListViewModel;
+
 @interface DDMessageListViewController : UIViewController
 
 @property (nonatomic, weak) id<DDMessageListViewControllerDelegate> delegate;
+@property (nonatomic, copy) NSArray<DDMessageListViewModel *> *viewModel;
+@property (nonatomic, weak) DDChatListViewModel *chatListModel;
+
+- (void)postMessage:(NSString *)message;
 
 @end
 

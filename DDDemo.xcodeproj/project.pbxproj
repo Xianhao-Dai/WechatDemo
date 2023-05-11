@@ -23,6 +23,8 @@
 		F0B439DA2A068C0700F28F04 /* DDDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B439D92A068C0700F28F04 /* DDDemoTests.m */; };
 		F0B439E42A068C0700F28F04 /* DDDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B439E32A068C0700F28F04 /* DDDemoUITests.m */; };
 		F0B439E62A068C0700F28F04 /* DDDemoUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B439E52A068C0700F28F04 /* DDDemoUITestsLaunchTests.m */; };
+		F0DE3F8D2A0BFEE800EB1D7A /* DDMessageListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0DE3F8C2A0BFEE800EB1D7A /* DDMessageListTableViewCell.m */; };
+		F0DE3F902A0BFFDC00EB1D7A /* DDMessageListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0DE3F8F2A0BFFDC00EB1D7A /* DDMessageListViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,10 @@
 		F0B439DF2A068C0700F28F04 /* DDDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DDDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0B439E32A068C0700F28F04 /* DDDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDDemoUITests.m; sourceTree = "<group>"; };
 		F0B439E52A068C0700F28F04 /* DDDemoUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDDemoUITestsLaunchTests.m; sourceTree = "<group>"; };
+		F0DE3F8B2A0BFEE800EB1D7A /* DDMessageListTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDMessageListTableViewCell.h; sourceTree = "<group>"; };
+		F0DE3F8C2A0BFEE800EB1D7A /* DDMessageListTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDMessageListTableViewCell.m; sourceTree = "<group>"; };
+		F0DE3F8E2A0BFFDC00EB1D7A /* DDMessageListViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDMessageListViewModel.h; sourceTree = "<group>"; };
+		F0DE3F8F2A0BFFDC00EB1D7A /* DDMessageListViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDMessageListViewModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +152,10 @@
 				F0565A752A09E83000517887 /* DDInputViewController.m */,
 				F0565A772A09EEC500517887 /* DDInputViewControllerDelegate.h */,
 				F0565A782A09EFD900517887 /* DDMessageListViewControllerDelegate.h */,
+				F0DE3F8B2A0BFEE800EB1D7A /* DDMessageListTableViewCell.h */,
+				F0DE3F8C2A0BFEE800EB1D7A /* DDMessageListTableViewCell.m */,
+				F0DE3F8E2A0BFFDC00EB1D7A /* DDMessageListViewModel.h */,
+				F0DE3F8F2A0BFFDC00EB1D7A /* DDMessageListViewModel.m */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -451,6 +461,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0DE3F902A0BFFDC00EB1D7A /* DDMessageListViewModel.m in Sources */,
 				F0565A732A09E82400517887 /* DDMessageListViewController.m in Sources */,
 				F0565A612A068FE100517887 /* DDRootViewController.m in Sources */,
 				F0565A702A0951F700517887 /* DDMesageViewController.m in Sources */,
@@ -458,6 +469,7 @@
 				F0565A642A0690AB00517887 /* DDChatListViewModel.m in Sources */,
 				F0B439BF2A068C0500F28F04 /* AppDelegate.m in Sources */,
 				F0565A672A06B5B300517887 /* DDChatListTableViewCell.m in Sources */,
+				F0DE3F8D2A0BFEE800EB1D7A /* DDMessageListTableViewCell.m in Sources */,
 				F0B439D02A068C0700F28F04 /* main.m in Sources */,
 				F0B439C22A068C0500F28F04 /* SceneDelegate.m in Sources */,
 			);

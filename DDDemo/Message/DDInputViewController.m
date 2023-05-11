@@ -91,8 +91,9 @@
     }
 }
 
+// 用于解决输入框多行的约束问题
 - (void)textViewDidChange:(YYTextView *)textView {
-    CGFloat maxHeight = 200.0f; // 输入框最大高度
+    CGFloat maxHeight = 200.0f;
     CGSize sizeThatFits = [textView sizeThatFits:CGSizeMake(textView.frame.size.width, MAXFLOAT)];
     CGFloat newHeight = MIN(sizeThatFits.height, maxHeight);
     [self.textField mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -102,6 +103,15 @@
         make.top.equalTo(self.contentContainerView.mas_top).offset(8);
         make.height.mas_equalTo(newHeight);
     }];
+}
+
+- (BOOL)textView:(YYTextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if ([text isEqualToString:@"\n"]) {
+        [self.delegate postMessageFromInputVC:textView.text];
+        textView.text = @"";
+        return NO;
+    }
+    return YES;
 }
 
 - (void)handleKeyboardWillShow:(NSNotification *)noti {

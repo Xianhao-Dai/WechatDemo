@@ -46,10 +46,6 @@ CGFloat const kSeparatorHeight = 1.0f;
     [self.avatarContainerView addSubview:self.avatarImageView];
     [self.contentView addSubview:self.nameLabel];
     [self.contentView addSubview:self.separatorView];
-    self.avatarImageView.layer.cornerRadius = 8.0f;
-    self.avatarImageView.layer.masksToBounds = YES;
-    self.nameLabel.font = [UIFont fontWithName:@"PingFangSC-Semibold" size:16.0];
-    self.separatorView.backgroundColor = [UIColor systemGray6Color];
 }
 
 - (void)p_makeConstraints {
@@ -88,6 +84,8 @@ CGFloat const kSeparatorHeight = 1.0f;
 - (UIImageView *)avatarImageView {
     if (!_avatarImageView) {
         _avatarImageView = [[UIImageView alloc] init];
+        _avatarImageView.layer.cornerRadius = 8.0f;
+        _avatarImageView.layer.masksToBounds = YES;
     }
     return _avatarImageView;
 }
@@ -95,6 +93,7 @@ CGFloat const kSeparatorHeight = 1.0f;
 - (UILabel *)nameLabel {
     if (!_nameLabel) {
         _nameLabel = [[UILabel alloc] init];
+        _nameLabel.font = [UIFont fontWithName:@"PingFangSC-Semibold" size:16.0];
     }
     return _nameLabel;
 }
@@ -102,6 +101,7 @@ CGFloat const kSeparatorHeight = 1.0f;
 - (UIView *)separatorView {
     if (!_separatorView) {
         _separatorView = [[UILabel alloc] init];
+        _separatorView.backgroundColor = [UIColor systemGray6Color];
     }
     return _separatorView;
 }

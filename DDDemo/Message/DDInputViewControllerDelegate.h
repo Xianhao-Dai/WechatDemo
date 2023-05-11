@@ -11,7 +11,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol DDInputViewControllerDelegate <NSObject>
 
+// 键盘弹起、落下时用于更新inputVC约束
 - (void)moveInputViewWithKeyboardHeight:(CGFloat)height duration:(NSTimeInterval)duration;
+
+// 用于接受inputVC消息并发送，现阶段仅支持文本发送
+- (void)postMessageFromInputVC:(NSString *)message;
 
 @end
 

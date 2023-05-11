@@ -101,6 +101,12 @@ CGFloat const kHeaderViewHeight = 64.0f;
 
 #pragma mark - UITableViewDelegate
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    DDChatListTableViewCell *cell = [self.chatListTableView dequeueReusableCellWithIdentifier:chatListTableViewCellIdentifier];
+    [cell configWithModel:[self.viewModel objectAtIndex:[self realIndexWithIndexPath:indexPath]]];
+    return cell;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     cell.selectedBackgroundView.backgroundColor = [UIColor systemGray6Color];
@@ -117,12 +123,6 @@ CGFloat const kHeaderViewHeight = 64.0f;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.viewModel.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    DDChatListTableViewCell *cell = [self.chatListTableView dequeueReusableCellWithIdentifier:chatListTableViewCellIdentifier];
-    [cell configWithModel:[self.viewModel objectAtIndex:[self realIndexWithIndexPath:indexPath]]];
-    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
