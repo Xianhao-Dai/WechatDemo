@@ -63,14 +63,16 @@
     }];
 
     [self.messageContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contentView);
-        make.bottom.lessThanOrEqualTo(self.contentView);
-        make.left.greaterThanOrEqualTo(self.contentView);
+        make.top.equalTo(self.contentView).offset(10);
+        make.bottom.lessThanOrEqualTo(self.contentView).offset(-10);
+        make.left.greaterThanOrEqualTo(self.contentView).offset(10);
         make.right.equalTo(self.avatarContainerView.mas_left);
     }];
     
+    padding = UIEdgeInsetsMake(0, 5, 0, 5);
+    
     [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.contentView).insets(padding);
+        make.edges.equalTo(self.messageContainerView).insets(padding);
     }];
 }
 
@@ -80,12 +82,13 @@
     CGFloat maxHeight = 200.0f;
     CGSize sizeThatFits = [textView sizeThatFits:CGSizeMake(334, MAXFLOAT)];
     CGFloat newHeight = MIN(sizeThatFits.height, maxHeight);
+    CGFloat heightPadding = MAX(0, (40 - newHeight) / 2);
     CGFloat newWidth = sizeThatFits.width;
-    UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
+    UIEdgeInsets padding = UIEdgeInsetsMake(heightPadding, 5, heightPadding, 5);
     [self.textView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.messageContainerView).insets(padding);
         make.height.mas_equalTo(newHeight);
-        make.width.mas_equalTo(newWidth + 10);
+        make.width.mas_equalTo(newWidth);
     }];
 }
 
@@ -110,6 +113,9 @@
 - (UIView *)messageContainerView {
     if (!_messageContainerView) {
         _messageContainerView = [[UIView alloc] init];
+        _messageContainerView.backgroundColor = [UIColor systemGreenColor];
+        _messageContainerView.layer.cornerRadius = 3.0f;
+        _messageContainerView.contentMode = UIViewContentModeCenter;
     }
     return _messageContainerView;
 }
@@ -117,12 +123,9 @@
 - (YYTextView *)textView {
     if (!_textView) {
         _textView = [[YYTextView alloc] init];
-        _textView.backgroundColor = [UIColor systemGreenColor];
-        _textView.contentInset = UIEdgeInsetsMake(0, 5, 0, 5);
         _textView.delegate = self;
-        _textView.layer.cornerRadius = 3.0f;
         _textView.editable = NO;
-        _textView.font = [UIFont systemFontOfSize:20];
+        _textView.font = [UIFont systemFontOfSize:18];
     }
     return _textView;
 }
