@@ -16,6 +16,7 @@
 @property (nonatomic, strong) UIButton *emojiBtn;
 @property (nonatomic, strong) UIButton *plusBtn;
 @property (nonatomic, strong) YYTextView *textField;
+@property (nonatomic, assign) CGFloat textFieldHeight;
 
 @end
 
@@ -28,6 +29,7 @@
     [self p_makeConstraints];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleKeyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    self.textFieldHeight = 0;
 }
 
 - (void)dealloc {
@@ -96,13 +98,20 @@
     CGFloat maxHeight = 200.0f;
     CGSize sizeThatFits = [textView sizeThatFits:CGSizeMake(textView.frame.size.width, MAXFLOAT)];
     CGFloat newHeight = MIN(sizeThatFits.height, maxHeight);
-    [self.textField mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.audioBtn.mas_right).offset(14);
-        make.right.equalTo(self.emojiBtn.mas_left).offset(-14);
-        make.bottom.equalTo(self.contentContainerView.mas_bottom).offset(-20);
-        make.top.equalTo(self.contentContainerView.mas_top).offset(8);
-        make.height.mas_equalTo(newHeight);
-    }];
+    if (fabs(newHeight - self.textFieldHeight) >= 1e-7) {
+        // 为了使得输入框growth不跳跃，用动画封装
+        [UIView animateWithDuration:0.3 animations:^{
+            [self.textField mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(self.audioBtn.mas_right).offset(14);
+                make.right.equalTo(self.emojiBtn.mas_left).offset(-14);
+                make.bottom.equalTo(self.contentContainerView.mas_bottom).offset(-20);
+                make.top.equalTo(self.contentContainerView.mas_top).offset(8);
+                make.height.mas_equalTo(newHeight);
+            }];
+            [self.delegate scrollMessageListVCToLastRow:NO];
+        }];
+        self.textFieldHeight = newHeight;
+    }
 }
 
 - (BOOL)textView:(YYTextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
@@ -119,6 +128,7 @@
     CGRect keyboardFrame = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     NSTimeInterval duration = [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     [self.delegate moveInputViewWithKeyboardHeight:keyboardFrame.size.height duration:duration];
+    [self.delegate scrollMessageListVCToLastRow:NO];
 }
 
 - (void)handleKeyboardWillHide:(NSNotification *)noti {

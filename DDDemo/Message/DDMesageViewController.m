@@ -56,6 +56,11 @@ DDInputViewControllerDelegate
     [self.messageListVC postMessage:message];
 }
 
+- (void)scrollMessageListVCToLastRow:(BOOL)animated {
+    [self.view layoutIfNeeded];
+    [self.messageListVC scrollToLastRow:animated];
+}
+
 #pragma mark - DDMessageListViewControllerDelegate
 
 - (void)handleMessageListVCTapGes {

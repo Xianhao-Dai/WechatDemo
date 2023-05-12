@@ -21,6 +21,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)postMessage:(NSString *)message;
 
+// messageList滑动到底部
+- (void)scrollToLastRow:(BOOL)animated;
+
 @end
 
 NS_ASSUME_NONNULL_END

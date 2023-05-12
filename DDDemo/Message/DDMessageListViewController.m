@@ -34,6 +34,10 @@ CGFloat const kMessageListTableViewCellHeight = 64.0f;
     [self p_makeConstraints];
 }
 
+- (void)dealloc {
+    [self.view removeGestureRecognizer:self.tapGes];
+}
+
 #pragma mark - Private Method
 
 - (void)p_setupUI {
@@ -63,6 +67,14 @@ CGFloat const kMessageListTableViewCellHeight = 64.0f;
     [models addObject:singleModel];
     self.viewModel = [models copy];
     [self.messageListTableView reloadData];
+    [self scrollToLastRow:YES];
+}
+
+- (void)scrollToLastRow:(BOOL)animated {
+    if (self.viewModel.count > 0) {
+        NSIndexPath *lastIndexPath = [NSIndexPath indexPathForRow:self.viewModel.count - 1 inSection:0];
+        [self.messageListTableView scrollToRowAtIndexPath:lastIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:animated];
+    }
 }
 
 #pragma mark - UITableViewDelegate
@@ -96,7 +108,7 @@ CGFloat const kMessageListTableViewCellHeight = 64.0f;
 
 #pragma mark - Private Method
 
-- (void)p_handleTapGes:(UITapGestureRecognizer *) ges {
+- (void)p_handleTapGes:(UITapGestureRecognizer *)ges {
     [self.delegate handleMessageListVCTapGes];
 }
 
@@ -116,6 +128,7 @@ CGFloat const kMessageListTableViewCellHeight = 64.0f;
         _messageListTableView.delegate = self;
         _messageListTableView.dataSource = self;
         _messageListTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _messageListTableView.allowsSelection = NO;
     }
     return _messageListTableView;
 }

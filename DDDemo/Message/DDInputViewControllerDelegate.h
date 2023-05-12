@@ -17,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 // 用于接受inputVC消息并发送，现阶段仅支持文本发送
 - (void)postMessageFromInputVC:(NSString *)message;
 
+// 滑动messageVC至底部
+- (void)scrollMessageListVCToLastRow:(BOOL)animated;
+
 @end
 
 NS_ASSUME_NONNULL_END

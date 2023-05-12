@@ -36,6 +36,8 @@
 - (void)prepareForReuse {
     [super prepareForReuse];
     self.selectedBackgroundView = nil;
+    self.textView.text = @"";
+    self.avatarImageView.image = nil;
 }
 
 #pragma mark - Private Method
